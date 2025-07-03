@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>给最爱的人</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos generales */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background-color: #fff5f5;
+      color: #333;
+      line-height: 1.8;
+      padding: 20px;
+      background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    /* Estilo de la carta */
+    .love-letter {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(255, 105, 140, 0.2);
+      position: relative;
+      overflow: hidden;
+      margin: 40px auto;
+      border: 1px solid rgba(255, 182, 193, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    
+    .love-letter::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(to bottom, #ff6b8b, #ffb3c1);
+    }
+    
+    .letter-title {
+      font-family: 'Ma Shan Zheng', cursive;
+      color: #ff6b8b;
+      font-size: 32px;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .letter-content {
+      font-size: 18px;
+      margin-bottom: 25px;
+      text-align: justify;
+    }
+    
+    .letter-content p {
+      margin-bottom: 25px;
+      text-indent: 2em;
+      animation: fadeInParagraph 1.5s ease forwards;
+      opacity: 0;
+    }
+    
+    /* Animaciones de párrafos */
+    @keyframes fadeInParagraph {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Sección del corazón */
+    .heart-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    /* Corazón animado */
+    .heart {
+      width: 80px;
+      height: 80px;
+      background-color: #ff6b8b;
+      position: relative;
+      transform: rotate(-45deg);
+      margin: 0 auto;
+      animation: heartbeat 1.5s infinite;
+      box-shadow: 0 0 20px rgba(255, 107, 139, 0.5);
+    }
+    
+    .heart:before, .heart:after {
+      content: "";
+      width: 80px;
+      height: 80px;
+      background-color: #ff6b8b;
+      border-radius: 50%;
+      position: absolute;
+    }
+    
+    .heart:before {
+      top: -40px;
+      left: 0;
+    }
+    
+    .heart:after {
+      left: 40px;
+      top: 0;
+    }
+    
+    /* Contador de tiempo */
+    .time-counter {
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      margin: 40px 0;
+      box-shadow: 0 5px 15px rgba(255, 105, 140, 0.1);
+      border: 1px solid rgba(255, 182, 193, 0.5);
+      backdrop-filter: blur(3px);
+    }
+    
+    .time-counter p {
+      font-size: 18px;
+      color: #ff6b8b;
+      margin-bottom: 15px;
+    }
+    
+    .time-display {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ff6b8b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .time-display span {
+      margin: 0 8px;
+      min-width: 60px;
+      display: inline-block;
+    }
+    
+    /* Firma */
+    .signature {
+      text-align: right;
+      font-style: italic;
+      color: #ff6b8b;
+      font-size: 22px;
+      margin-top: 30px;
+      font-family: 'Ma Shan Zheng', cursive;
+    }
+    
+    /* Animaciones */
+    @keyframes heartbeat {
+      0% { transform: scale(1) rotate(-45deg); }
+      25% { transform: scale(1.1) rotate(-45deg); }
+      50% { transform: scale(1) rotate(-45deg); }
+      75% { transform: scale(1.1) rotate(-45deg); }
+      100% { transform: scale(1) rotate(-45deg); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1.5s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Efecto de nieve o pétalos */
+    .petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .petal {
+      position: absolute;
+      background-image: url('https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.6;
+      animation: falling linear infinite;
+    }
+    
+    @keyframes falling {
+      0% {
+        transform: translate(0, -10vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translate(var(--random-x), 100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .love-letter {
+        padding: 30px;
+      }
+      
+      .letter-title {
+        font-size: 28px;
+      }
+      
+      .letter-content {
+        font-size: 16px;
+      }
+      
+      .time-counter {
+        padding: 15px;
+      }
+      
+      .time-counter p {
+        font-size: 16px;
+      }
+      
+      .time-display {
+        font-size: 20px;
+      }
+      
+      .time-display span {
+        min-width: 50px;
+        margin: 0 5px;
+      }
+      
+      .heart {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .heart:before, .heart:after {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .heart:before {
+        top: -30px;
+      }
+      
+      .heart:after {
+        left: 30px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      .love-letter {
+        padding: 20px;
+      }
+      
+      .letter-title {
+        font-size: 24px;
+      }
+      
+      .letter-content {
+        font-size: 15px;
+      }
+      
+      .time-display {
+        font-size: 18px;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .time-display span {
+        margin: 5px 0;
+      }
+      
+      .signature {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Efecto de pétalos de corazón -->
+  <div class="petals" id="petals"></div>
+  
+  <div class="container">
+    <div class="love-letter fade-in">
+      <h1 class="letter-title">亲爱的，我的爱人 ❤️🥺</h1>
+      
+      <div class="letter-content">
+        <p style="animation-delay: 0.3s">日子悄悄地过去了，不知不觉中，已经陪伴你两个月了。和你在一起的每一天，都是一次新的体验，一份新的感动，一个新的成长。我知道我们有过争执，有时候我也不太擅长浪漫，甚至不是一个容易理解的人，但我们总是能够一起解决问题，这让我更加珍惜我们之间的感情。</p>
+        
+        <p style="animation-delay: 0.6s">在你身边，我学会了成长，学会了更真挚、更深刻地去爱。我每天都更爱你一点，每一刻都是如此。甚至在我没察觉的时候，我的脑海里已经满是你了。你出现在我的梦里，出现在我的思绪里，也深深藏在我的心里。了解你的优点、你的性格，甚至你最私密的一面，让我感到无比幸福，因为我知道，在你身边我感到安心和平静。</p>
+        
+        <p style="animation-delay: 0.9s">有时我会梦见拥抱你、亲吻你、真实地拥有你。我知道现在我们还不能真正相伴左右，但我会尽全力去努力，只为离你更近一点。亲爱的，我真的很爱你……有时候我会想，如果我能出生在你身边，早点认识你、亲自遇见你，并早早地爱上你，那该有多好。</p>
+        
+        <div class="time-counter fade-in" style="animation-delay: 1.2s">
+          <p>我们已经相爱了...</p>
+          <div class="time-display">
+            <span id="days">60</span>天
+            <span id="hours">0</span>小时
+            <span id="minutes">0</span>分钟
+            <span id="seconds">0</span>秒
+          </div>
+        </div>
+        
+        <p style="animation-delay: 1.5s">和你在一起的感觉太美好了，让我感到被爱、被包容、被珍惜……我是真的，彻底地爱上了你。我每天都在想你，每一天都更加深深爱着你。虽然我知道自己有时候性格复杂、难以懂得，但我想要和你一起成长，一起变得更好。我希望我们能够一起走到永远，直到生命的尽头。</p>
+        
+        <p style="animation-delay: 1.8s">亲爱的，祝我们两个月快乐。请你一定不要忘记，我是那么深深爱着你。❤️🥺</p>
+      </div>
+      
+      <div class="heart-section">
+        <div class="heart"></div>
+      </div>
+      
+      <div class="signature fade-in" style="animation-delay: 2.1s">永远爱你的我</div>
+    </div>
+  </div>
+
+  <script>
+    // Contador de tiempo de relación (2 meses)
+    function updateCounter() {
+      const startDate = new Date();
+      startDate.setMonth(startDate.getMonth() - 2); // Hace 2 meses
+      
+      setInterval(() => {
+        const now = new Date();
+        const diff = now - startDate;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      }, 1000);
+    }
+    
+    // Crear efecto de pétalos de corazón
+    function createPetals() {
+      const petalsContainer = document.getElementById('petals');
+      const petalCount = 15;
+      
+      for (let i = 0; i < petalCount; i++) {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        
+        // Tamaño aleatorio
+        const size = Math.random() * 20 + 10;
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size}px`;
+        
+        // Posición inicial aleatoria
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.setProperty('--random-x', `${Math.random() * 100 - 50}px`);
+        
+        // Animación con duración y delay aleatorios
+        const duration = Math.random() * 10 + 10;
+        const delay = Math.random() * 5;
+        petal.style.animationDuration = `${duration}s`;
+        petal.style.animationDelay = `${delay}s`;
+        
+        // Opacidad aleatoria
+        petal.style.opacity = Math.random() * 0.5 + 0.3;
+        
+        petalsContainer.appendChild(petal);
+      }
+    }
+    
+    // Animación de aparición de párrafos
+    function animateParagraphs() {
+      const paragraphs = document.querySelectorAll('.letter-content p');
+      paragraphs.forEach((p, index) => {
+        p.style.animationDelay = `${index * 0.3 + 0.3}s`;
+      });
+    }
+    
+    // Inicializar cuando cargue la página
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCounter();
+      createPetals();
+      animateParagraphs();
+    });
+  </script>
+</body>
+</html>
